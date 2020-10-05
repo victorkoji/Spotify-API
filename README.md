@@ -38,8 +38,9 @@ Adicione notas adicionais sobre como implantar isso em um sistema ativo
 ```
 ## 🛠️ Construído com
 
-* [Vue.js](https://vuejs.org/)
-* [Spotify API](https://developer.spotify.com/documentation/web-api/)
+* [Vue.js] - https://vuejs.org/
+* [Spotify API] https://developer.spotify.com/documentation/web-api/ - github: https://github.com/spotify/web-api-auth-examples
+
 
 
 ---
