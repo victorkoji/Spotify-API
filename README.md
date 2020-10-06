@@ -19,6 +19,14 @@ Consulte **Implantação** para saber como implantar o projeto.
 Dentro da pasta do projeto, rode os seguintes comando:
 - npm install
 
+Dentro da pasta "web-api-spotify\authorization_code":
+- Renomeie o arquivo "appDev.js" para "app.js". 
+- No arquivo app.js, é preciso informar o CLIENT_ID e CLIENTE_SECRET.
+* Mais informações em https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app
+
+Dentro da pasta do projeto, rode os seguintes comando:
+- npm install
+
 Depois abra dois terminais e rode:
 1º Terminal - npm start
 2º Terminal - npm run serve
