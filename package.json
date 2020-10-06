@@ -1,11 +1,15 @@
 {
     "name": "spotify-api",
+    "private": true,
     "version": "1.0.0",
     "description": "Utilizando a api do spotify",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon ./web-api-spotify/authorization_code/app.js"
+        "start": "nodemon ./web-api-spotify/authorization_code/app.js",
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint"
     },
     "repository": {
         "type": "git",
@@ -18,6 +22,41 @@
     },
     "homepage": "https://github.com/vitorkoji/Spotify-API#readme",
     "dependencies": {
-        "nodemon": "^2.0.4"
-    }
+        "core-js": "^3.6.5",
+        "vue": "^2.6.11",
+        "nodemon": "^2.0.4",
+        "cookie-parser": "1.3.2",
+        "express": "~4.16.0",
+        "cors": "^2.8.4",
+        "querystring": "~0.2.0",
+        "request": "~2.83.0"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "~4.5.0",
+        "@vue/cli-plugin-eslint": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^6.7.2",
+        "eslint-plugin-vue": "^6.2.2",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "parserOptions": {
+            "parser": "babel-eslint"
+        },
+        "rules": {}
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
 }
