@@ -2,6 +2,7 @@
 <div>
     <h1>{{ msg }}</h1>
     <h1>{{ token }}</h1>
+    
 
     <a href="http://localhost:8888" class="btn btn-primary">Log in with Spotify</a>
 </div>
@@ -17,11 +18,11 @@ export default {
     msg: String,
     token: String
   },
-  data: function(){
-    return {
-      tk: this.token
-    }
-  },
+  // data: function(){
+  //   return {
+  //     tk: this.token
+  //   }
+  // },
   methods: {
     getHashParams: function () {
       var hashParams = {};
