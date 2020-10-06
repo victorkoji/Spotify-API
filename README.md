@@ -1,6 +1,6 @@
 # Spotify API
 
-Esse projeto utiliza a api do spotify para...
+Esse projeto utiliza a api do spotify para buscar informações sobre albuns, artistas e músicas.
 
 ## 🚀 Começando
 
@@ -16,32 +16,20 @@ Consulte **Implantação** para saber como implantar o projeto.
 
 ### 🔧 Instalação
 
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
+Dentro da pasta do projeto, rode os seguintes comando:
+- npm install
 
-Diga como essa etapa será:
+Depois abra dois terminais e rode:
+1º Terminal - npm start
+2º Terminal - npm run serve
 
+Depois abra o http://localhost:8080/
 ```
-Dar exemplos
-```
-
-E repita:
-
-```
-Até finalizar
-```
-
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
 
 ## 📦 Desenvolvimento
 
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
 ```
 ## 🛠️ Construído com
 
 * [Vue.js] - https://vuejs.org/
 * [Spotify API] https://developer.spotify.com/documentation/web-api/ - github: https://github.com/spotify/web-api-auth-examples
-
-
-
----
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
