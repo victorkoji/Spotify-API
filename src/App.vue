@@ -38,19 +38,20 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <!-- <HelloWorld/> -->
+      <Home msg="Spotify API"/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+// import HelloWorld from './components/HelloWorld';
+import Home from './components/Home';
 
 export default {
   name: 'App',
-
   components: {
-    HelloWorld,
+    Home
   },
 
   data: () => ({
