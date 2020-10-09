@@ -1,74 +1,149 @@
 <template>
-<div>
-    <h1>{{ msg }}</h1>
-    <h1>{{ token }}</h1>
+  <div>
+    <v-parallax dark src="@/assets/bg_spotify.jpg" height="1000">
+      <h1 class="text-center">{{ titulo }}</h1>
 
-    <v-btn color="accent" elevation="2">
-      <a href="http://localhost:8888" class="btn btn-primary">Login Spotify</a>
-    </v-btn>
+      <v-form id="form-spotify">
+        <v-container dark>
+          <v-row>
+            <v-col cols="12" md="4">
+              <v-text-field
+                v-model="busca"
+                :counter="10"
+                label="Shakira..."
+                required
+                placeholder="Pesquisar..."
+              ></v-text-field>
+            </v-col>
 
-    <v-btn color="accent" elevation="2" style="margin-top:20px" v-on:click="topTracksLorde()">
-      Pesquisar
-    </v-btn>
+            <v-col class="d-flex" cols="12" md="4">
+              <v-select
+                :items="itensTipoBusca"
+                v-model="valorTipoBusca"
+                label="Tipo de Busca"
+              ></v-select>
+            </v-col>
+            <v-col>
+              <v-btn
+                class="d-flex"
+                cols="12"
+                md="2"
+                color="secondary"
+                elevation="2"
+                style="margin-top: 20px"
+                v-on:click="pesquisar()"
+              >
+                Pesquisar
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
 
-    <p id="teste">{{ resultado }}</p>
-</div>
+      <div>
+        <v-data-table
+          :headers="headers"
+          :items="dados"
+          item-key="id"
+          class="elevation-1"
+        >
+          <template v-slot:no-data>
+              Sem dados disponíveis
+          </template>
+        </v-data-table>
+      </div>
+    </v-parallax>
+  </div>
 </template>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
   props: {
-    msg: String
+    titulo: String,
   },
   data: () => {
-    return{
+    return {
       resultado: [],
-      token: ""
-    } 
+      token: "",
+      busca: "",
+      itensTipoBusca: [
+        { text: "Álbum", value: "album" },
+        { text: "Artista", value: "artist" },
+        { text: "Playlist", value: "playlist" },
+        { text: "Faixa", value: "tracks" },
+      ],
+      valorTipoBusca: "",
+      dados: [],
+    };
+  },
+  computed: {
+    headers() {
+      return [
+        { text: "Nome", value: "name" },
+        { text: "Popularidade", value: "popularity" },
+        { text: "Link", value: "external_urls.spotify" },
+      ];
+    },
   },
   methods: {
-    getHashParams () {
+    getHashParams() {
       var hashParams = {};
-      var e, r = /([^&;=]+)=?([^&;]*)/g,
-      q = window.location.hash.substring(1);
-      while (e = r.exec(q)) {
+      var e,
+        r = /([^&;=]+)=?([^&;]*)/g,
+        q = window.location.hash.substring(1);
+      while ((e = r.exec(q))) {
         hashParams[e[1]] = decodeURIComponent(e[2]);
       }
       return hashParams;
     },
-    topTracksLorde() {
-      this.token = this.getHashParams().access_token;
-
+    pesquisar() {
       var myHeaders = new Headers({
-        'Authorization': `Bearer ${this.token}`, 
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      })
-
-      fetch('https://api.spotify.com/v1/artists/163tK9Wjr9P9DmM0AVK7lm/top-tracks?country=BR', {
-        method: 'GET',
-        dataType: "Json",
-        headers: myHeaders,
-        credentials: 'same-origin'
-      })
-      .then(response => {
-        return response.json();
-      })
-      .then((response) => {
-        this.resultado = response.tracks;
-      })
-      .catch((response) => {
-        console.log(response)
+        Authorization: `Bearer ${this.token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
       });
-    }
+
+      fetch(
+        `https://api.spotify.com/v1/search?q=${this.busca}&type=${this.valorTipoBusca}`,
+        {
+          method: "GET",
+          dataType: "Json",
+          headers: myHeaders,
+          credentials: "same-origin",
+        }
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          switch (this.valorTipoBusca) {
+            case "album":
+              this.dados = response.albums.items;
+              break;
+            case "artist":
+              this.dados = response.artists.items;
+              break;
+            case "playlist":
+              this.dados = response.playlists.items;
+              break;
+            case "tracks":
+              this.dados = response.artists.items;
+              break;
+          }
+        })
+        .catch((response) => {
+          console.log(response);
+        });
+    },
   },
-  beforeMount(){
-    // this.token = this.getHashParams().access_token
-  }
-}
+  beforeMount() {
+    this.token = this.getHashParams().access_token;
+  },
+};
 </script>
 
 <style>
-
+#form-spotify {
+  background: #272727;
+}
 </style>
