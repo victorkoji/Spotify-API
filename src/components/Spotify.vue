@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-parallax class="bg-conteudo" height="1000">
-      <div v-if="token">
+      <div v-if="user">
         <h1 class="text-center">{{ titulo }}</h1>
 
         <v-form id="form-spotify">
@@ -47,11 +47,9 @@
         </div>
       </div>
       <div v-else class="text-center">
-        <v-btn color="secondary" elevation="2">
-          <a href="http://localhost:8888/login" class="btn-spotify"
-            >Login Spotify</a
-          >
-        </v-btn>
+        <h1>Você não está logado!</h1>
+        <ButtonLoginSpotify titulo="Login Spotify" />
+        
       </div>
     </v-parallax>
   </div>
@@ -59,16 +57,18 @@
 <script>
 import Tabela from "./Tabela";
 import Snackbar from "./Snackbar";
+import ButtonLoginSpotify from "./ButtonLoginSpotify";
 
 export default {
   name: "Spotify",
   components: {
     Tabela,
-    Snackbar
+    Snackbar,
+    ButtonLoginSpotify
   },
   props: {
     titulo: String,
-    token: String
+    user: Object
   },
   data: () => {
     return {

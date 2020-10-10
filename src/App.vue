@@ -2,7 +2,7 @@
   <v-app>
     <Header :user="user" />
     <v-main>
-        <Spotify titulo="Spotify API" :token="token" />
+        <Spotify titulo="Spotify API" :user="user" />
     </v-main>
     <Footer />
 
@@ -61,11 +61,14 @@ export default {
           return response.json();
         })
         .then((response) => {
-          console.log(response);
-          this.user = response;
+          if(response.error)
+            this.user = null;
+          else
+            this.user = response;
+
         })
         .catch((response) => {
-          console.log(response);
+          console.log(response)
         });
     }
   },

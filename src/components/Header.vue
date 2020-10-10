@@ -18,27 +18,26 @@
         <v-toolbar-title class="color-spotify">{{ user.display_name }}</v-toolbar-title>
       </div>
       <div v-else>
-        <v-btn color="secondary" elevation="2">
-          <a href="http://localhost:8888/login" class="color-spotify"
-            >Login Spotify</a
-          >
-        </v-btn>
+        <ButtonLoginSpotify titulo="Login Spotify" />
       </div>
     </v-toolbar>
   </v-card>
 </template>
 
 <script>
+import ButtonLoginSpotify from "./ButtonLoginSpotify";
+
 export default {
   name: "Header",
   props: {
     user: Object,
   },
+  components: {
+    ButtonLoginSpotify
+  }
 };
 </script>
 
 <style>
-.color-spotify {
-  color: #6bd06b !important;
-}
+
 </style>
