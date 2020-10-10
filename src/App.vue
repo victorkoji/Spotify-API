@@ -1,7 +1,7 @@
 <template>
   <v-app>
 
-    <Header titulo="Spotify API" />
+    <Header />
     <v-main>
         <Spotify titulo="Spotify API" />
     </v-main>

@@ -11,7 +11,7 @@
     <template v-slot:no-data> Sem dados disponíveis </template>
     <template v-slot:[`item.external_urls.spotify`]="{ value }">
       <v-btn elevation="2" class="btn-abrir-spotify">
-        <a :href="`${value}`" target="_blank"> Abrir no spotify </a>
+        <a :href="value" target="_blank"> Abrir no spotify </a>
       </v-btn>
     </template>
   </v-data-table>

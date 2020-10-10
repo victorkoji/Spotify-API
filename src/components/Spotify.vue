@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-parallax dark style="background:linear-gradient(120deg, #1db954, #191414);" height="1000">
+    <v-parallax class="bg-conteudo" height="1000">
       <div v-if="token">
         <h1 class="text-center">{{ titulo }}</h1>
 
@@ -75,9 +75,9 @@ export default {
         { text: "Álbum", value: "album" },
         { text: "Artista", value: "artist" },
         { text: "Playlist", value: "playlist" },
-        { text: "Faixa", value: "tracks" },
+        { text: "Música", value: "track" },
       ],
-      valorTipoBusca: "",
+      valorTipoBusca: "track",
       dados: [],
     };
   },
@@ -122,8 +122,8 @@ export default {
             case "playlist":
               this.dados = response.playlists.items;
               break;
-            case "tracks":
-              this.dados = response.artists.items;
+            case "track":
+              this.dados = response.tracks.items;
               break;
           }
         })
@@ -139,17 +139,20 @@ export default {
 </script>
 
 <style>
-#form-spotify {
-  background: #272727;
-}
+  #form-spotify {
+    background: #272727;
+  }
 
-.btn-abrir-spotify{
-  background: #1da14b !important;
-}
+  .btn-abrir-spotify{
+    background: #1da14b !important;
+  }
 
-.btn-abrir-spotify a{
-  color: #FFF !important;
-}
+  .btn-abrir-spotify a{
+    color: #FFF !important;
+  }
 
+  .bg-conteudo{
+    background:linear-gradient(120deg, #1db954, #191414);
+  }
 
 </style>

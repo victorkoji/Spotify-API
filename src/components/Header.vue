@@ -3,7 +3,7 @@
     <v-toolbar extended>
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-      <v-toolbar-title></v-toolbar-title>
+      <!-- <v-toolbar-title></v-toolbar-title> -->
       <img src="@/assets/spotify-seeklogo.com.svg" alt="logo" style="height: 40px;">
 
       <v-spacer></v-spacer>
@@ -21,9 +21,6 @@
 <script>
 export default {
   name: "Header",
-  props: {
-    titulo: String,
-  },
 };
 </script>
 
