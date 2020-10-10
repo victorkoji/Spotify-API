@@ -68,11 +68,11 @@ export default {
   },
   props: {
     titulo: String,
+    token: String
   },
   data: () => {
     return {
       resultado: [],
-      token: "",
       busca: "",
       itensTipoBusca: [
         { text: "Álbum", value: "album" },
@@ -85,16 +85,6 @@ export default {
     };
   },
   methods: {
-    getHashParams() {
-      var hashParams = {};
-      var e,
-        r = /([^&;=]+)=?([^&;]*)/g,
-        q = window.location.hash.substring(1);
-      while ((e = r.exec(q))) {
-        hashParams[e[1]] = decodeURIComponent(e[2]);
-      }
-      return hashParams;
-    },
     pesquisar() {
       var myHeaders = new Headers({
         Authorization: `Bearer ${this.token}`,
@@ -134,10 +124,7 @@ export default {
           console.log(response);
         });
     },
-  },
-  beforeMount() {
-    this.token = this.getHashParams().access_token;
-  },
+  }
 };
 </script>
 
