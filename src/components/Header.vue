@@ -1,7 +1,7 @@
 <template>
   <v-card color="grey lighten-4" flat tile>
     <v-toolbar extended>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
       <v-toolbar-title></v-toolbar-title>
       <img src="@/assets/spotify-seeklogo.com.svg" alt="logo" style="height: 40px;">

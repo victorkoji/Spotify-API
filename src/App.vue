@@ -22,9 +22,5 @@ export default {
     Header,
     Footer
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
