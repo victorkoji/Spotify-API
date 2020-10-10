@@ -40,6 +40,7 @@
             </v-row>
           </v-container>
         </v-form>
+        <Snackbar texto="Você está logado!" />
 
         <div>
           <Tabela :dados="dados" />
@@ -57,11 +58,13 @@
 </template>
 <script>
 import Tabela from "./Tabela";
+import Snackbar from "./Snackbar";
 
 export default {
   name: "Spotify",
   components: {
-    Tabela
+    Tabela,
+    Snackbar
   },
   props: {
     titulo: String,
