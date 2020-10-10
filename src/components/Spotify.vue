@@ -42,21 +42,7 @@
         </v-form>
 
         <div>
-          <v-data-table
-            :headers="headers"
-            :items="dados"
-            item-key="id"
-            class="elevation-1"
-          >
-            <template v-slot:no-data> Sem dados disponíveis </template>
-            <template v-slot:[`item.external_urls.spotify`]="{ value }" >
-              <v-btn elevation="2" class="btn-abrir-spotify">
-                <a :href="`${value}`" target="_blank">
-                  Abrir no spotify
-                </a>
-              </v-btn>
-          </template>
-          </v-data-table>
+          <Tabela :dados="dados" />
         </div>
       </div>
       <div v-else class="text-center">
@@ -70,8 +56,13 @@
   </div>
 </template>
 <script>
+import Tabela from "./Tabela";
+
 export default {
   name: "Spotify",
+  components: {
+    Tabela
+  },
   props: {
     titulo: String,
   },
@@ -89,15 +80,6 @@ export default {
       valorTipoBusca: "",
       dados: [],
     };
-  },
-  computed: {
-    headers() {
-      return [
-        { text: "Nome", value: "name" },
-        { text: "Popularidade", value: "popularity" },
-        { text: "Link", value: "external_urls.spotify" },
-      ];
-    },
   },
   methods: {
     getHashParams() {

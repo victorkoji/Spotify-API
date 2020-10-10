@@ -1,47 +1,43 @@
 <template>
-  
+  <v-data-table
+    :headers="headers"
+    :items="dados"
+    item-key="id"
+    class="elevation-1 dados-tabela"
+    :footer-props="{
+      'items-per-page-text':'Itens por página'
+    }"
+  >
+    <template v-slot:no-data> Sem dados disponíveis </template>
+    <template v-slot:[`item.external_urls.spotify`]="{ value }">
+      <v-btn elevation="2" class="btn-abrir-spotify">
+        <a :href="`${value}`" target="_blank"> Abrir no spotify </a>
+      </v-btn>
+    </template>
+  </v-data-table>
 </template>
 
 <script>
 export default {
   name: "Tabela",
   props: {
-    dados: [],
-  },
-  data() {
-    return {
-      search: "",
-      calories: ""
-    }
+    dados: Array,
   },
   computed: {
     headers() {
       return [
-        {
-          text: "Dessert (100g serving)",
-          align: "start",
-          sortable: false,
-          value: "name",
-        },
-        {
-          text: "Calories",
-          value: "calories",
-          filter: (value) => {
-            if (!this.calories) return true;
-
-            return value < parseInt(this.calories);
-          },
-        },
-        { text: "Fat (g)", value: "fat" },
-        { text: "Carbs (g)", value: "carbs" },
-        { text: "Protein (g)", value: "protein" },
-        { text: "Iron (%)", value: "iron" },
+        { text: "Nome", value: "name" },
+        { text: "Popularidade", value: "popularity" },
+        { text: "Link", value: "external_urls.spotify" },
       ];
     },
   },
-  
 };
 </script>
 
 <style>
+  .dados-tabela .v-data-table__wrapper{
+    max-height: 500px;
+    overflow-y: auto;
+  }
 </style>
