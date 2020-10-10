@@ -1,63 +1,77 @@
 <template>
   <div>
-    <v-parallax dark src="@/assets/bg_spotify.jpg" height="1000">
-      <h1 class="text-center">{{ titulo }}</h1>
+    <v-parallax dark style="background:linear-gradient(120deg, #1db954, #191414);" height="1000">
+      <div v-if="token">
+        <h1 class="text-center">{{ titulo }}</h1>
 
-      <v-form id="form-spotify">
-        <v-container dark>
-          <v-row>
-            <v-col cols="12" md="4">
-              <v-text-field
-                v-model="busca"
-                :counter="10"
-                label="Shakira..."
-                required
-                placeholder="Pesquisar..."
-              ></v-text-field>
-            </v-col>
+        <v-form id="form-spotify">
+          <v-container dark>
+            <v-row>
+              <v-col cols="12" md="4">
+                <v-text-field
+                  v-model="busca"
+                  :counter="25"
+                  required
+                  placeholder="Pesquisar..."
+                ></v-text-field>
+              </v-col>
 
-            <v-col class="d-flex" cols="12" md="4">
-              <v-select
-                :items="itensTipoBusca"
-                v-model="valorTipoBusca"
-                label="Tipo de Busca"
-              ></v-select>
-            </v-col>
-            <v-col>
-              <v-btn
-                class="d-flex"
-                cols="12"
-                md="2"
-                color="secondary"
-                elevation="2"
-                style="margin-top: 20px"
-                v-on:click="pesquisar()"
-              >
-                Pesquisar
+              <v-col class="d-flex" cols="12" md="4">
+                <v-select
+                  :items="itensTipoBusca"
+                  v-model="valorTipoBusca"
+                  label="Tipo de Busca"
+                  required
+                ></v-select>
+              </v-col>
+              <v-col>
+                <v-btn
+                  class="d-flex"
+                  cols="12"
+                  md="2"
+                  color="secondary"
+                  elevation="2"
+                  style="margin-top: 20px"
+                  v-on:click="pesquisar()"
+                >
+                  Pesquisar
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-form>
+
+        <div>
+          <v-data-table
+            :headers="headers"
+            :items="dados"
+            item-key="id"
+            class="elevation-1"
+          >
+            <template v-slot:no-data> Sem dados disponíveis </template>
+            <template v-slot:[`item.external_urls.spotify`]="{ value }" >
+              <v-btn elevation="2" class="btn-abrir-spotify">
+                <a :href="`${value}`" target="_blank">
+                  Abrir no spotify
+                </a>
               </v-btn>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-form>
-
-      <div>
-        <v-data-table
-          :headers="headers"
-          :items="dados"
-          item-key="id"
-          class="elevation-1"
-        >
-          <template v-slot:no-data>
-              Sem dados disponíveis
           </template>
-        </v-data-table>
+          </v-data-table>
+        </div>
+      </div>
+      <div v-else class="text-center">
+        <v-btn color="secondary" elevation="2">
+          <a href="http://localhost:8888/login" class="btn-spotify"
+            >Login Spotify</a
+          >
+        </v-btn>
       </div>
     </v-parallax>
   </div>
 </template>
 <script>
 export default {
-  name: "Home",
+  name: "Spotify",
   props: {
     titulo: String,
   },
@@ -146,4 +160,14 @@ export default {
 #form-spotify {
   background: #272727;
 }
+
+.btn-abrir-spotify{
+  background: #1da14b !important;
+}
+
+.btn-abrir-spotify a{
+  color: #FFF !important;
+}
+
+
 </style>

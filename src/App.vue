@@ -3,7 +3,7 @@
 
     <Header titulo="Spotify API" />
     <v-main>
-        <Home titulo="Spotify API" />
+        <Spotify titulo="Spotify API" />
     </v-main>
     <Footer />
 
@@ -12,13 +12,13 @@
 
 <script>
 import Header from "./components/Header";
-import Home from "./components/Home";
+import Spotify from "./components/Spotify";
 import Footer from "./components/Footer";
 
 export default {
   name: "App",
   components: {
-    Home,
+    Spotify,
     Header,
     Footer
   },
