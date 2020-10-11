@@ -16,6 +16,9 @@
 
       <div v-if="user">
         <v-toolbar-title class="color-spotify">{{ user.display_name }}</v-toolbar-title>
+        
+        <ButtonLogoutSpotify titulo="Logout"/>
+        
       </div>
       <div v-else>
         <ButtonLoginSpotify titulo="Login Spotify" />
@@ -26,6 +29,7 @@
 
 <script>
 import ButtonLoginSpotify from "./ButtonLoginSpotify";
+import ButtonLogoutSpotify from "./ButtonLogoutSpotify";
 
 export default {
   name: "Header",
@@ -33,7 +37,8 @@ export default {
     user: Object,
   },
   components: {
-    ButtonLoginSpotify
+    ButtonLoginSpotify,
+    ButtonLogoutSpotify
   }
 };
 </script>

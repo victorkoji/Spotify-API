@@ -2,10 +2,9 @@
   <v-app>
     <Header :user="user" />
     <v-main>
-        <Spotify titulo="Spotify API" :user="user" />
+      <Spotify titulo="Spotify API" :user="user" />
     </v-main>
     <Footer />
-
   </v-app>
 </template>
 
@@ -19,13 +18,13 @@ export default {
   components: {
     Spotify,
     Header,
-    Footer
+    Footer,
   },
   data: () => {
     return {
       token: "",
-      user: {}
-    }
+      user: {},
+    };
   },
   methods: {
     getHashParams() {
@@ -39,7 +38,7 @@ export default {
       return hashParams;
     },
 
-    userLogado(){
+    userLogado() {
       this.token = this.getHashParams().access_token;
 
       var myHeaders = new Headers({
@@ -48,29 +47,23 @@ export default {
         "Content-Type": "application/json",
       });
 
-      fetch(
-        `https://api.spotify.com/v1/me`,
-        {
-          method: "GET",
-          dataType: "Json",
-          headers: myHeaders,
-          credentials: "same-origin",
-        }
-      )
+      fetch(`https://api.spotify.com/v1/me`, {
+        method: "GET",
+        dataType: "Json",
+        headers: myHeaders,
+        credentials: "same-origin",
+      })
         .then((response) => {
           return response.json();
         })
         .then((response) => {
-          if(response.error)
-            this.user = null;
-          else
-            this.user = response;
-
+          if (response.error) this.user = null;
+          else this.user = response;
         })
         .catch((response) => {
-          console.log(response)
+          console.log(response);
         });
-    }
+    },
   },
   beforeMount() {
     this.userLogado();
