@@ -12,13 +12,10 @@
       </a>
 
       <v-spacer></v-spacer>
-      <i class="fa fa-github" aria-hidden="true"></i>
 
       <div v-if="user">
-        <v-toolbar-title class="color-spotify">{{ user.display_name }}</v-toolbar-title>
-        
-        <ButtonLogoutSpotify titulo="Logout"/>
-        
+        <v-toolbar-title class="color-spotify"
+          >{{ user.display_name }} <ButtonLogoutSpotify titulo="Logout"/></v-toolbar-title>
       </div>
       <div v-else>
         <ButtonLoginSpotify titulo="Login Spotify" />
@@ -38,11 +35,10 @@ export default {
   },
   components: {
     ButtonLoginSpotify,
-    ButtonLogoutSpotify
-  }
+    ButtonLogoutSpotify,
+  },
 };
 </script>
 
 <style>
-
 </style>
