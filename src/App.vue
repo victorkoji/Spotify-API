@@ -2,7 +2,7 @@
   <v-app>
     <Header :user="user" />
     <v-main>
-      <Spotify titulo="Spotify API" :user="user" />
+      <Spotify titulo="Spotify API" :user="user" :token="token"/>
     </v-main>
     <Footer />
   </v-app>

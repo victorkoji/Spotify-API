@@ -68,7 +68,8 @@ export default {
   },
   props: {
     titulo: String,
-    user: Object
+    user: Object,
+    token: String
   },
   data: () => {
     return {
