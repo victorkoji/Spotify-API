@@ -5,6 +5,15 @@
         <h1 class="text-center">{{ titulo }}</h1>
 
         <v-form id="form-spotify">
+          <div v-if="error">
+            <v-alert
+              border="right"
+              color="blue-grey"
+              dark
+            >
+              {{error}}
+            </v-alert>
+          </div>
           <v-container dark>
             <v-row>
               <v-col cols="12" md="4">
@@ -75,14 +84,15 @@ export default {
     return {
       resultado: [],
       busca: "",
+      valorTipoBusca: "track",
+      dados: [],
+      error: "",
       itensTipoBusca: [
         { text: "Álbum", value: "album" },
         { text: "Artista", value: "artist" },
         { text: "Playlist", value: "playlist" },
         { text: "Música", value: "track" },
-      ],
-      valorTipoBusca: "track",
-      dados: [],
+      ]
     };
   },
   methods: {
@@ -93,7 +103,12 @@ export default {
         "Content-Type": "application/json",
       });
 
-      fetch(
+      /** Se o campo de pesquisar não estiver vazio, faz a busca **/
+      /** Se estiver vazio, retorna uma mensagem de erro **/
+      if(this.busca){
+        this.error = ""; // Coloca vazio no campo de erro
+
+        fetch(
         `https://api.spotify.com/v1/search?q=${this.busca}&type=${this.valorTipoBusca}`,
         {
           method: "GET",
@@ -124,6 +139,9 @@ export default {
         .catch((response) => {
           console.log(response);
         });
+      }else{
+        this.error = 'O campo de busca está vazio!';
+      }
     },
   }
 };
