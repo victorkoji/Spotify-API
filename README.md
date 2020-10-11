@@ -21,12 +21,14 @@ Dentro da pasta do projeto, rode os seguintes comando:
 
 Dentro da pasta "web-api-spotify\authorization_code":
 - Renomeie o arquivo "appDev.js" para "app.js". 
-- No arquivo app.js, é preciso informar o CLIENT_ID e CLIENTE_SECRET.
+- No arquivo app.js, é preciso informar o CLIENT_ID e CLIENT_SECRET.
 * Mais informações em https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app
 
 Depois abra dois terminais e rode:
-1º Terminal - npm start
-2º Terminal - npm run serve
+1º Terminal:
+  npm start
+2º Terminal:
+  npm run serve
 
 Depois abra o http://localhost:8080/
 ```
@@ -38,3 +40,4 @@ Depois abra o http://localhost:8080/
 
 * [Vue.js] - https://vuejs.org/
 * [Spotify API] https://developer.spotify.com/documentation/web-api/ - github: https://github.com/spotify/web-api-auth-examples
+* [Vuetify.js] - https://vuetifyjs.com/en/
