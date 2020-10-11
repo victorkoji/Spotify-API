@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "nodemon ./web-api-spotify/authorization_code/app.js",
+    "start": "node ./web-api-spotify/authorization_code/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "index.js",
