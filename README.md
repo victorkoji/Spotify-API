@@ -26,7 +26,7 @@ Dentro da pasta "web-api-spotify\authorization_code":
 
 Depois abra dois terminais e rode:
 1º Terminal:
-  <code>npm start</code>
+  npm start
 2º Terminal:
   npm run serve
 
